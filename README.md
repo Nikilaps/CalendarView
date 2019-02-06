@@ -1,6 +1,8 @@
 # CalendarView
 Simple calendar view with single and multiple drag date selection.
 
+![alt text](https://cdn1.imggmi.com/uploads/2019/2/6/935532860919a2429c992e6a3f5da240-full.png)
+
 Usage
 
 Include CustomCalendarView in your layout XML.
@@ -10,7 +12,7 @@ Include CustomCalendarView in your layout XML.
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-In  activity/dialog or fragment, initialize the view with a range of valid dates and selection mode.
+In activity/dialog or fragment, initialize the view with a range of valid dates and selection mode.
       * To select one date at a time we use Selection mode 'SINGLE'
       * To select range of dates use selection mode 'RANGE'
 
@@ -28,8 +30,7 @@ In  activity/dialog or fragment, initialize the view with a range of valid dates
         CustomCalendarView cv = (findViewById(R.id.calendar_view));
         cv.loadComponents(this, calendar.getTime(), date, CustomCalendarView.SelectionMode.RANGE);
 	
-	
-	 cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
+	cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
                 Toast.makeText(MainActivity.this, sdf.format(date), Toast.LENGTH_SHORT).show();
@@ -39,7 +40,7 @@ In  activity/dialog or fragment, initialize the view with a range of valid dates
             public void onDateUnSelected(Date date) {
 
             }
-	    
+	   
 	    @Override
             public void onMultipleDateSelected(Date startDate, Date endDate) {
                 Toast.makeText(
@@ -76,15 +77,15 @@ gradle:
   
   gradle:
   
-        dependencies {
+   dependencies {
 	        implementation 'com.github.Nikilaps:CalendarView:1.1.1'
-	}
+   }
   
   maven:
   
-        <dependency>
+    <dependency>
 	    <groupId>com.github.Nikilaps</groupId>
 	    <artifactId>CalendarView</artifactId>
 	    <version>1.1.1</version>
-	</dependency>
+    </dependency>
 
