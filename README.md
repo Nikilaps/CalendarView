@@ -26,10 +26,10 @@ In  activity/dialog or fragment, initialize the view with a range of valid dates
         }
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",  Locale.getDefault());
         CustomCalendarView cv = (findViewById(R.id.calendar_view));
-        cv.loadComponents(this, calendar.getTime(), date, CalendarView.SelectionMode.RANGE);
+        cv.loadComponents(this, calendar.getTime(), date, CustomCalendarView.SelectionMode.RANGE);
 	
 	
-	 cv.setOnDateSelectedListener(new CalendarView.OnDateSelectedListener() {
+	 cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
                 Toast.makeText(MainActivity.this, sdf.format(date), Toast.LENGTH_SHORT).show();
