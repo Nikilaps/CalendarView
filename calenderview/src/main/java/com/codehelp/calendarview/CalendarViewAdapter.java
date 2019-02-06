@@ -3,6 +3,7 @@ package com.codehelp.calendarview;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,14 +61,16 @@ public class CalendarViewAdapter extends
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public ItemHolder onCreateViewHolder(final ViewGroup parent,
+    public ItemHolder onCreateViewHolder(@NonNull final ViewGroup parent,
                                          final int viewType) {
         return new ItemHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_calendar_day, parent, false));
     }
+    @SuppressWarnings("deprecation")
     @Override
-    public void onBindViewHolder(final ItemHolder holder,
+    public void onBindViewHolder(@NonNull final ItemHolder holder,
                                  final int position) {
         final DateCellModel date = getItem(position);
         int month = date.getDate().getMonth();
@@ -85,12 +88,12 @@ public class CalendarViewAdapter extends
                     holder.dayView.setTypeface(null, Typeface.BOLD);
                     holder.dayView.setBackgroundResource(R.color.colorBlue);
                     if (date.isStartDate()) {
-                        holder.dayView.setText("Start");
+                        holder.dayView.setText(mContext.getString(R.string.start));
                         holder.dayView.setBackgroundResource(
                                 R.drawable.bg_border_layout_day);
                     }
                     if (date.isEndDate()) {
-                        holder.dayView.setText("End");
+                        holder.dayView.setText(mContext.getString(R.string.end));
                         holder.dayView.setBackgroundResource(
                                 R.drawable.bg_border_layout_day);
                     }
@@ -149,21 +152,22 @@ public class CalendarViewAdapter extends
     }
 
     /**
-     * cell click actions communicate with {@link CalendarView}.
+     * cell click actions communicate with {@link CustomCalendarView}.
      */
     public interface CalenderCommunicator {
+
         /**
          * item click listener.
          * @param dateCellModel selected cell value
          * @param view selected cell view
          */
         void onClickListener(DateCellModel dateCellModel, View view);
+
         /**
          * item long click listener.
          * @param dateCellModel selected cell value
          * @param view selected cell view
-         * @return true
          */
-        boolean onItemLongClick(DateCellModel dateCellModel, View view);
+        void onItemLongClick(DateCellModel dateCellModel, View view);
     }
 }

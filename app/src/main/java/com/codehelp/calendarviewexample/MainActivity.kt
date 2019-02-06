@@ -1,7 +1,7 @@
 package com.codehelp.calendarviewexample
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.codehelp.calendarview.CustomCalendarView
 import java.text.ParseException
@@ -30,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         cv.loadComponents(this, calendar.time, date, CustomCalendarView.SelectionMode.RANGE)
         cv.setHeaderBackground(R.color.colorAccent)
         cv.setOnDateSelectedListener(object : CustomCalendarView.OnDateSelectedListener {
+            override fun onMultipleDateSelected(startDate: Date?, endDate: Date?) {
+                Toast.makeText(
+                    this@MainActivity, "Start :" + sdf.format(startDate)
+                            + "  End :" + sdf.format(endDate), Toast.LENGTH_SHORT
+                ).show()
+            }
+
             override fun onDateSelected(date: Date) {
                 Toast.makeText(this@MainActivity, sdf.format(date), Toast.LENGTH_SHORT).show()
             }

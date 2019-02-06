@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -61,8 +62,13 @@ public class CustomCalendarView extends LinearLayout
                 if (setSelection(dateCellModel, mSelectionMode)) {
                     selectedDates.add(dateCellModel);
                     updateCalender();
-                    dateSelectionListener.onDateSelected(
-                            (Date) textView.getTag());
+                    if (mSelectionMode.equals(SelectionMode.SINGLE)) {
+                        dateSelectionListener.onDateSelected(
+                                (Date) textView.getTag());
+                    } else if (selectedDates.size() > 1) {
+                        dateSelectionListener.onMultipleDateSelected(selectedDates.get(0).getDate(),
+                                selectedDates.get(1).getDate());
+                    }
                 } else {
                     selectedDates.remove(new DateCellModel(
                             (Date) textView.getTag(), true));
@@ -83,17 +89,15 @@ public class CustomCalendarView extends LinearLayout
      *
      * @param dateCellModel selected cell value
      * @param view          selected cell view
-     * @return true
      */
     @Override
-    public boolean onItemLongClick(final DateCellModel dateCellModel,
-                                   final View view) {
+    public void onItemLongClick(final DateCellModel dateCellModel,
+                                final View view) {
         if (mSelectionMode.equals(SelectionMode.RANGE)) {
             clearAllSelections();
             mDragSelectTouchListener.startDragSelection(
                     cells.indexOf(dateCellModel));
         }
-        return false;
     }
 
     /**
@@ -238,6 +242,10 @@ public class CustomCalendarView extends LinearLayout
         if (dateArray != null && dateArray.size() > 0) {
             dateArray.add(selectedDates.get(1));
             selectedDates.addAll(dateArray);
+        }
+        if (selectedDates.size() > 1) {
+            dateSelectionListener.onMultipleDateSelected(selectedDates.get(0).getDate(),
+                    selectedDates.get(1).getDate());
         }
         updateCalender();
     }
@@ -408,6 +416,8 @@ public class CustomCalendarView extends LinearLayout
         void onDateSelected(Date date);
 
         void onDateUnSelected(Date date);
+
+        void onMultipleDateSelected(Date startDate, Date endDate);
     }
 
     /**
