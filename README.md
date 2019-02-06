@@ -1,8 +1,6 @@
 # CalendarView
 Simple calendar view with single and multiple drag date selection.
 
-![alt text](https://github.com/Nikilaps/CalendarView/blob/master/app/Screenshot_1549455614.png)
-
 Usage
 
 Include CustomCalendarView in your layout XML.
@@ -91,3 +89,4 @@ gradle:
 	    <version>1.1.1</version>
         </dependency>
 ```
+![alt text](https://github.com/Nikilaps/CalendarView/blob/master/app/Screenshot_1549455614.png)
