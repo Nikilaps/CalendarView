@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="CustomCalendarView">
+    <attr name="android:background"/>
+    <attr name="dividerColor" format="color"/>
+    <attr name="dayBackground" format="reference"/>
+    <attr name="dayTextColor" format="color"/>
+    <attr name="titleTextColor" format="color"/>
+    <attr name="displayHeader" format="boolean"/>
+    <attr name="headerTextColor" format="color"/>
+    <attr name="headerColor" format="color"/>
+  </declare-styleable>
+
+
+</resources>
