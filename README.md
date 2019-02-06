@@ -39,6 +39,14 @@ In  activity/dialog or fragment, initialize the view with a range of valid dates
             public void onDateUnSelected(Date date) {
 
             }
+	    
+	    @Override
+            public void onMultipleDateSelected(Date startDate, Date endDate) {
+                Toast.makeText(
+                        MainActivity.this, "Start :" + sdf.format(startDate)
+                        + "  End :" + sdf.format(endDate), Toast.LENGTH_SHORT
+                ).show();
+            }
         });
 
 Add to Project:
@@ -69,14 +77,14 @@ gradle:
   gradle:
   
         dependencies {
-	        implementation 'com.github.Nikilaps:CalendarView:0.1.0'
+	        implementation 'com.github.Nikilaps:CalendarView:1.1.1'
 	}
   
   maven:
   
         <dependency>
-	      <groupId>com.github.Nikilaps</groupId>
-	      <artifactId>CalendarView</artifactId>
-	      <version>0.1.0</version>
-        </dependency>
+	    <groupId>com.github.Nikilaps</groupId>
+	    <artifactId>CalendarView</artifactId>
+	    <version>1.1.1</version>
+	</dependency>
 
