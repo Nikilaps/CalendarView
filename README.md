@@ -77,9 +77,11 @@ gradle:
   
   gradle:
   
-   dependencies {
+  
+        dependencies {
 	        implementation 'com.github.Nikilaps:CalendarView:1.1.1'
-   }
+	}
+  
   
   maven:
   
