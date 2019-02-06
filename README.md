@@ -1,7 +1,7 @@
 # CalendarView
 Simple calendar view with single and multiple drag date selection.
 
-![alt text](https://cdn1.imggmi.com/uploads/2019/2/6/935532860919a2429c992e6a3f5da240-full.png)
+![alt text](https://github.com/Nikilaps/CalendarView/blob/master/app/Screenshot_1549455614.png)
 
 Usage
 
@@ -15,7 +15,7 @@ Include CustomCalendarView in your layout XML.
 In activity/dialog or fragment, initialize the view with a range of valid dates and selection mode.
       * To select one date at a time we use Selection mode 'SINGLE'
       * To select range of dates use selection mode 'RANGE'
-
+```java
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         String dtStart = "2019-05-01"; // end date
@@ -29,7 +29,7 @@ In activity/dialog or fragment, initialize the view with a range of valid dates 
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",  Locale.getDefault());
         CustomCalendarView cv = (findViewById(R.id.calendar_view));
         cv.loadComponents(this, calendar.getTime(), date, CustomCalendarView.SelectionMode.RANGE);
-	
+	```
 	cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
