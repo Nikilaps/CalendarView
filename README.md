@@ -29,8 +29,8 @@ In activity/dialog or fragment, initialize the view with a range of valid dates 
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",  Locale.getDefault());
         CustomCalendarView cv = (findViewById(R.id.calendar_view));
         cv.loadComponents(this, calendar.getTime(), date, CustomCalendarView.SelectionMode.RANGE);
-	```
-	cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
+	
+        cv.setOnDateSelectedListener(new CustomCalendarView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {
                 Toast.makeText(MainActivity.this, sdf.format(date), Toast.LENGTH_SHORT).show();
@@ -49,6 +49,7 @@ In activity/dialog or fragment, initialize the view with a range of valid dates 
                 ).show();
             }
         });
+```
 
 Add to Project:
 
@@ -56,38 +57,37 @@ Step 1.
 Add the JitPack repository to your build file
 
 gradle:
-
+```gradle
 	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-  
+```
   maven:
-  
-           <repositories>
+```maven
+        <repositories>
 		 <repository>
 		     <id>jitpack.io</id>
 		     <url>https://jitpack.io</url>
 		  </repository>
-	   </repositories>
-  
+	 </repositories>
+```
   Step 2. Add the dependency
   
   gradle:
-  
-  
+```gradle
         dependencies {
 	        implementation 'com.github.Nikilaps:CalendarView:1.1.1'
 	}
-  
+```
   
   maven:
-  
-    <dependency>
+```maven  
+        <dependency>
 	    <groupId>com.github.Nikilaps</groupId>
 	    <artifactId>CalendarView</artifactId>
 	    <version>1.1.1</version>
-    </dependency>
-
+        </dependency>
+```
